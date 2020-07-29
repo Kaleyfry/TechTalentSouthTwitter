@@ -14,6 +14,7 @@ import com.tts.TechTalentTwitter.service.UserService;
 
 @Controller
 public class FollowController {
+
     @Autowired
     private UserService userService;
 
