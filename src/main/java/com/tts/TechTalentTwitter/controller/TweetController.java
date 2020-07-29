@@ -22,6 +22,7 @@ import com.tts.TechTalentTwitter.service.UserService;
 
 @Controller
 public class TweetController {
+
     @Autowired
     private UserService userService;
 

@@ -21,85 +21,81 @@ import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 import org.hibernate.validator.constraints.Length;
 
-// import lombok.AllArgsConstructor;
-// import lombok.Builder;
-// import lombok.Data;
-// import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-// @Data
-// @Builder
-// @AllArgsConstructor
-// @NoArgsConstructor
+@Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 public class Tweet {
-		
-		@Id
-		@GeneratedValue(strategy = GenerationType.AUTO)
-		@Column(name = "tweet_id")
-		private Long id;
-			
-		@ManyToOne(fetch = FetchType.LAZY, optional = false)
-		@JoinColumn(name = "user_id")
-		@OnDelete(action = OnDeleteAction.CASCADE)
-		private User user;
-		
-		@ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
-		@JoinTable(name = "tweet_tag", joinColumns = @JoinColumn(name = "tweet_id"),
-		    inverseJoinColumns = @JoinColumn(name = "tag_id"))
-		private List<Tag> tags;
-			
-		@NotEmpty(message = "Tweet cannot be empty")
-		@Length(max = 280, message = "Tweet cannot have more than 280 characters")
-		private String message;
-			
-		@CreationTimestamp 
-		private Date createdAt;
 
-		public Long getId() {
-			return id;
-		}
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "tweet_id")
+	private Long id;
 
-		public User getUser() {
-			return user;
-		}
+	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+	@JoinColumn(name = "user_id")
+	@OnDelete(action = OnDeleteAction.CASCADE)
+	private User user;
 
-		public void setUser(User user) {
-			this.user = user;
-		}
+	@ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+	@JoinTable(name = "tweet_tag", joinColumns = @JoinColumn(name = "tweet_id"), inverseJoinColumns = @JoinColumn(name = "tag_id"))
+	private List<Tag> tags;
 
-		public List<Tag> getTags() {
-			return tags;
-		}
+	@NotEmpty(message = "Tweet cannot be empty")
+	@Length(max = 280, message = "Tweet cannot have more than 280 characters")
+	private String message;
 
-		public void setTags(List<Tag> tags) {
-			this.tags = tags;
-		}
+	@CreationTimestamp
+	private Date createdAt;
 
-		public String getMessage() {
-			return message;
-		}
+	// Use the code below if your lombok is not working:
+	// public Long getId() {
+	// return id;
+	// }
 
-		public void setMessage(String message) {
-			this.message = message;
-		}
+	// public User getUser() {
+	// return user;
+	// }
 
-		public Date getCreatedAt() {
-			return createdAt;
-		}
+	// public void setUser(User user) {
+	// this.user = user;
+	// }
 
-		public void setCreatedAt(Date createdAt) {
-			this.createdAt = createdAt;
-		}
+	// public List<Tag> getTags() {
+	// return tags;
+	// }
 
-		@Override
-		public String toString() {
-			return "Tweet [createdAt=" + createdAt + ", id=" + id + ", message=" + message + ", tags=" + tags
-					+ ", user=" + user + "]";
-		}
+	// public void setTags(List<Tag> tags) {
+	// this.tags = tags;
+	// }
 
-		
-		
+	// public String getMessage() {
+	// return message;
+	// }
 
-		
-	}
+	// public void setMessage(String message) {
+	// this.message = message;
+	// }
 
+	// public Date getCreatedAt() {
+	// return createdAt;
+	// }
+
+	// public void setCreatedAt(Date createdAt) {
+	// this.createdAt = createdAt;
+	// }
+
+	// @Override
+	// public String toString() {
+	// return "Tweet [createdAt=" + createdAt + ", id=" + id + ", message=" +
+	// message + ", tags=" + tags
+	// + ", user=" + user + "]";
+	// }
+
+}
